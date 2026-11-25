@@ -1,7 +1,7 @@
 # Utiliser la librairie Phaser pour créer un jeu web
 
-## GameDev Presentation
-<https://chk.me/kieIT8n>
+## Slides du cours
+Les slides des 3 jours (game loop, scènes, patterns, etc.) sont dans [slides/](slides/), un projet Slidev indépendant du jeu : `npm install` puis `npm run dev` dans `slides/`.
 
 ## Setup du projet
 Installer NodeJS LTS (via nvm, volta, etc.)

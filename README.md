@@ -23,7 +23,6 @@ Le serveur de dev (`npm run dev-nolog`) peut rester lancé pendant `git go` : il
 ## Matériel pédagogique
 - [COURS.md](COURS.md) — support de cours : concepts Phaser, patterns, processus dev, idées de features
 - [EVALUATION.md](EVALUATION.md) — sujet de l'évaluation notée (nouvel ennemi sinusoïdal + spread shot + config JSON, branche `eval` + PR)
-- [docs/](docs/) — plan de cours jour par jour, outline des slides, présentation « coder avec un agent IA », review du matériel
 - [slides/](slides/) — slides des 3 jours de cours (Slidev, voir [slides/README.md](slides/README.md))
 
 ## Credits
