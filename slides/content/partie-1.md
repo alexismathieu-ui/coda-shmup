@@ -365,7 +365,7 @@ class: commit-slide
 
 <!--
 preload :27-28, create :38-39, update :142-143.
-CC0 = utilisable librement, y compris commercialement. Outils : photopea.com, free-tex-packer.com.
+CC0 = utilisable librement, y compris commercialement. Outil : photopea.com.
 Ordre d'affichage : le fond est créé avant le joueur, donc dessiné dessous (et le joueur a setDepth(100)).
 -->
 
