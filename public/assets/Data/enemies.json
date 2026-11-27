@@ -1,0 +1,214 @@
+{
+  "scout": {
+    "id": "scout",
+    "name": "Red Scout",
+    "health": 1,
+    "scoreValue": 100,
+    "tint": "#ffffff",
+    "scale": 1.0,
+    "dropChance": 0.06,
+    "movementKind": "linear",
+    "speed": 0.22,
+    "attackKind": "single",
+    "shootDelayMin": 1700,
+    "shootDelayMax": 2600,
+    "bullet": {
+      "width": 14,
+      "height": 14,
+      "color": "#ff3b5c",
+      "speed": 520,
+      "damage": 1
+    }
+  },
+  "sinusoidal": {
+    "id": "sinusoidal",
+    "name": "Wave Weaver",
+    "health": 2,
+    "scoreValue": 180,
+    "tint": "#44ffcc",
+    "scale": 1.05,
+    "dropChance": 0.10,
+    "movementKind": "sinusoidal",
+    "speed": 0.17,
+    "amplitude": 170,
+    "frequency": 0.55,
+    "attackKind": "spread",
+    "shootDelayMin": 1900,
+    "shootDelayMax": 2800,
+    "spreadShot": {
+      "bulletCount": 3,
+      "spreadAngle": 34
+    },
+    "bullet": {
+      "width": 15,
+      "height": 15,
+      "color": "#00f5d4",
+      "speed": 470,
+      "damage": 1
+    }
+  },
+  "kamikaze": {
+    "id": "kamikaze",
+    "name": "Solar Striker",
+    "health": 1,
+    "scoreValue": 150,
+    "tint": "#ff9f1c",
+    "scale": 0.78,
+    "dropChance": 0.07,
+    "movementKind": "kamikaze",
+    "speed": 0.45,
+    "attackKind": "none",
+    "shootDelayMin": 99999,
+    "shootDelayMax": 99999
+  },
+  "tank": {
+    "id": "tank",
+    "name": "Heavy Dreadnought",
+    "health": 7,
+    "scoreValue": 400,
+    "tint": "#c77dff",
+    "scale": 1.42,
+    "dropChance": 0.28,
+    "movementKind": "linear",
+    "speed": 0.10,
+    "attackKind": "spread",
+    "shootDelayMin": 2000,
+    "shootDelayMax": 2800,
+    "spreadShot": {
+      "bulletCount": 5,
+      "spreadAngle": 60
+    },
+    "bullet": {
+      "width": 17,
+      "height": 17,
+      "color": "#d946ef",
+      "speed": 400,
+      "damage": 1
+    }
+  },
+  "sniper": {
+    "id": "sniper",
+    "name": "Pulse Sniper",
+    "health": 2,
+    "scoreValue": 260,
+    "tint": "#ff4d6d",
+    "scale": 0.95,
+    "dropChance": 0.12,
+    "movementKind": "sniper",
+    "speed": 0.24,
+    "stopY": 360,
+    "attackKind": "aimed",
+    "shootDelayMin": 2000,
+    "shootDelayMax": 2700,
+    "bullet": {
+      "width": 14,
+      "height": 22,
+      "color": "#ff1e42",
+      "speed": 760,
+      "damage": 1
+    }
+  },
+  "orbital": {
+    "id": "orbital",
+    "name": "Vortex Spinner",
+    "health": 3,
+    "scoreValue": 300,
+    "tint": "#80ed99",
+    "scale": 1.12,
+    "dropChance": 0.14,
+    "movementKind": "orbital",
+    "speed": 0.13,
+    "attackKind": "spiral",
+    "shootDelayMin": 520,
+    "shootDelayMax": 620,
+    "bullet": {
+      "width": 15,
+      "height": 15,
+      "color": "#38f97c",
+      "speed": 420,
+      "damage": 1
+    }
+  },
+  "cargo": {
+    "id": "cargo",
+    "name": "Golden Cargo",
+    "health": 4,
+    "scoreValue": 600,
+    "tint": "#ffd166",
+    "scale": 1.15,
+    "dropChance": 1.0,
+    "guaranteedDrop": true,
+    "movementKind": "cargo",
+    "speed": 0.28,
+    "attackKind": "none",
+    "shootDelayMin": 99999,
+    "shootDelayMax": 99999
+  },
+  "splitter": {
+    "id": "splitter",
+    "name": "Acid Splitter",
+    "health": 3,
+    "scoreValue": 260,
+    "tint": "#b5e48c",
+    "scale": 1.16,
+    "dropChance": 0.14,
+    "splitsOnDeath": true,
+    "movementKind": "linear",
+    "speed": 0.16,
+    "attackKind": "single",
+    "shootDelayMin": 2000,
+    "shootDelayMax": 2800,
+    "bullet": {
+      "width": 14,
+      "height": 14,
+      "color": "#b5e48c",
+      "speed": 470,
+      "damage": 1
+    }
+  },
+  "minelayer": {
+    "id": "minelayer",
+    "name": "Mine Layer",
+    "health": 3,
+    "scoreValue": 280,
+    "tint": "#ffb703",
+    "scale": 1.06,
+    "dropChance": 0.16,
+    "movementKind": "minelayer",
+    "speed": 0.15,
+    "attackKind": "mine",
+    "shootDelayMin": 2100,
+    "shootDelayMax": 2700,
+    "bullet": {
+      "width": 14,
+      "height": 14,
+      "color": "#ffb703",
+      "speed": 390,
+      "damage": 1
+    }
+  },
+  "aegis": {
+    "id": "aegis",
+    "name": "Aegis Guardian",
+    "health": 4,
+    "scoreValue": 340,
+    "tint": "#4895ef",
+    "scale": 1.15,
+    "dropChance": 0.20,
+    "protectsAllies": true,
+    "movementKind": "sinusoidal",
+    "speed": 0.12,
+    "amplitude": 110,
+    "frequency": 0.4,
+    "attackKind": "single",
+    "shootDelayMin": 2200,
+    "shootDelayMax": 3000,
+    "bullet": {
+      "width": 14,
+      "height": 14,
+      "color": "#4895ef",
+      "speed": 450,
+      "damage": 1
+    }
+  }
+}

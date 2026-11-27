@@ -31,21 +31,59 @@ export default class Weapon implements IComponent {
 
         const shotAngles = this.computeShotAngles(source.rotation);
         for (const angleRad of shotAngles) {
-            const bullet = this._bullets.get() as Bullet | null;
-            if (!bullet) {
-                break;
-            }
-
-            const direction = new Phaser.Math.Vector2(1, 0).rotate(angleRad);
-            const velocity = direction.clone().scale(this._bulletData.speed);
-            bullet.enable(
-                source.x + direction.x * source.arcadeBody.radius,
-                source.y + direction.y * source.arcadeBody.radius,
-                velocity.x,
-                velocity.y,
-                this._bulletData
-            );
+            this.spawnBullet(source.x, source.y, source.arcadeBody.radius, angleRad, this._bulletData);
         }
+    }
+
+    public shootAtAngle(
+        x: number,
+        y: number,
+        radius: number,
+        angleRad: number,
+        bulletOverride?: BulletData
+    ): void {
+        if (!this.enabled || !this._bullets) {
+            return;
+        }
+
+        this.spawnBullet(x, y, radius, angleRad, bulletOverride ?? this._bulletData);
+    }
+
+    public shootCustomSpread(
+        x: number,
+        y: number,
+        radius: number,
+        baseRotation: number,
+        bulletCount: number,
+        spreadAngleDeg: number,
+        bulletOverride?: BulletData
+    ): void {
+        if (!this.enabled || !this._bullets) {
+            return;
+        }
+
+        const angles = Weapon.calculateSpreadAngles(baseRotation, bulletCount, spreadAngleDeg);
+        const data = bulletOverride ?? this._bulletData;
+        for (const angleRad of angles) {
+            this.spawnBullet(x, y, radius, angleRad, data);
+        }
+    }
+
+    private spawnBullet(x: number, y: number, radius: number, angleRad: number, data: BulletData): void {
+        const bullet = this._bullets.get() as Bullet | null;
+        if (!bullet) {
+            return;
+        }
+
+        const direction = new Phaser.Math.Vector2(1, 0).rotate(angleRad);
+        const velocity = direction.clone().scale(data.speed);
+        bullet.enable(
+            x + direction.x * radius,
+            y + direction.y * radius,
+            velocity.x,
+            velocity.y,
+            data
+        );
     }
 
     private computeShotAngles(baseRotation: number): number[] {
@@ -53,8 +91,20 @@ export default class Weapon implements IComponent {
             return [baseRotation];
         }
 
-        const count = Math.floor(this._spreadData.bulletCount);
-        const spreadDeg = Math.max(0, this._spreadData.spreadAngle);
+        return Weapon.calculateSpreadAngles(
+            baseRotation,
+            this._spreadData.bulletCount,
+            this._spreadData.spreadAngle
+        );
+    }
+
+    public static calculateSpreadAngles(baseRotation: number, bulletCount: number, spreadAngleDeg: number): number[] {
+        if (bulletCount <= 1) {
+            return [baseRotation];
+        }
+
+        const count = Math.floor(bulletCount);
+        const spreadDeg = Math.max(0, spreadAngleDeg);
         const angles: number[] = [];
 
         if (spreadDeg >= Weapon.FULL_CIRCLE_DEGREES) {

@@ -1,0 +1,179 @@
+[
+  {
+    "id": "leviathan",
+    "name": "CYBER LEVIATHAN",
+    "subtitle": "SINUSOIDAL DREADNOUGHT",
+    "health": 85,
+    "scoreValue": 3000,
+    "tint": "#4cc9f0",
+    "enragedTint": "#ff4d6d",
+    "scale": 2.4,
+    "bullet": {
+      "width": 17,
+      "height": 17,
+      "color": "#00f5d4",
+      "speed": 460,
+      "damage": 1
+    },
+    "phase1": {
+      "patterns": ["spread", "aimedBurst", "ring"],
+      "fireIntervalMs": 1150,
+      "moveSpeed": 0.25,
+      "spreadCount": 7,
+      "spreadAngle": 86,
+      "ringCount": 16
+    },
+    "phase2": {
+      "patterns": ["ring", "spread", "aimedBurst", "crossRing"],
+      "fireIntervalMs": 860,
+      "moveSpeed": 0.36,
+      "spreadCount": 9,
+      "spreadAngle": 108,
+      "ringCount": 20
+    }
+  },
+  {
+    "id": "vortex_lord",
+    "name": "VORTEX OVERLORD",
+    "subtitle": "SPIRAL ANNIHILATOR",
+    "health": 120,
+    "scoreValue": 4500,
+    "tint": "#80ed99",
+    "enragedTint": "#ff9f1c",
+    "scale": 2.55,
+    "bullet": {
+      "width": 16,
+      "height": 16,
+      "color": "#38f97c",
+      "speed": 480,
+      "damage": 1
+    },
+    "phase1": {
+      "patterns": ["spiral", "spread", "spiral", "ring"],
+      "fireIntervalMs": 760,
+      "moveSpeed": 0.28,
+      "spreadCount": 8,
+      "spreadAngle": 96,
+      "ringCount": 18
+    },
+    "phase2": {
+      "patterns": ["spiral", "crossRing", "aimedBurst", "spiral"],
+      "fireIntervalMs": 580,
+      "moveSpeed": 0.40,
+      "spreadCount": 11,
+      "spreadAngle": 120,
+      "ringCount": 24
+    }
+  },
+  {
+    "id": "solar_titan",
+    "name": "SOLAR TITAN",
+    "subtitle": "ORBITAL BEAM FORTRESS",
+    "health": 155,
+    "scoreValue": 6000,
+    "tint": "#ff9f1c",
+    "enragedTint": "#ff2a55",
+    "scale": 2.75,
+    "bullet": {
+      "width": 17,
+      "height": 17,
+      "color": "#ffb703",
+      "speed": 490,
+      "damage": 1
+    },
+    "phase1": {
+      "patterns": ["spread", "laserSweep", "ring"],
+      "fireIntervalMs": 1050,
+      "moveSpeed": 0.22,
+      "spreadCount": 9,
+      "spreadAngle": 105,
+      "ringCount": 18
+    },
+    "phase2": {
+      "patterns": ["laserSweep", "crossRing", "aimedBurst", "spread"],
+      "fireIntervalMs": 800,
+      "moveSpeed": 0.34,
+      "spreadCount": 11,
+      "spreadAngle": 125,
+      "ringCount": 24
+    }
+  },
+  {
+    "id": "phantom_architect",
+    "name": "PHANTOM ARCHITECT",
+    "subtitle": "WARP ASSASSIN",
+    "health": 190,
+    "scoreValue": 8000,
+    "tint": "#c77dff",
+    "enragedTint": "#f72585",
+    "scale": 2.5,
+    "teleports": true,
+    "bullet": {
+      "width": 16,
+      "height": 16,
+      "color": "#e040fb",
+      "speed": 520,
+      "damage": 1
+    },
+    "phase1": {
+      "patterns": ["aimedBurst", "crossRing", "spread"],
+      "fireIntervalMs": 860,
+      "moveSpeed": 0.36,
+      "spreadCount": 9,
+      "spreadAngle": 110,
+      "ringCount": 20
+    },
+    "phase2": {
+      "patterns": ["aimedBurst", "laserSweep", "crossRing", "spiral"],
+      "fireIntervalMs": 660,
+      "moveSpeed": 0.48,
+      "spreadCount": 11,
+      "spreadAngle": 130,
+      "ringCount": 26
+    }
+  },
+  {
+    "id": "omega_emperor",
+    "name": "OMEGA EMPEROR",
+    "subtitle": "FINAL BOSS · SOVEREIGN OF THE VOID",
+    "health": 280,
+    "scoreValue": 15000,
+    "tint": "#ffd166",
+    "enragedTint": "#f72585",
+    "phase3Tint": "#ff1e42",
+    "scale": 3.15,
+    "teleports": true,
+    "isFinalBoss": true,
+    "bullet": {
+      "width": 17,
+      "height": 17,
+      "color": "#ff3b5c",
+      "speed": 510,
+      "damage": 1
+    },
+    "phase1": {
+      "patterns": ["spread", "ring", "aimedBurst", "crossRing"],
+      "fireIntervalMs": 920,
+      "moveSpeed": 0.28,
+      "spreadCount": 9,
+      "spreadAngle": 115,
+      "ringCount": 20
+    },
+    "phase2": {
+      "patterns": ["laserSweep", "spiral", "crossRing", "aimedBurst"],
+      "fireIntervalMs": 700,
+      "moveSpeed": 0.38,
+      "spreadCount": 11,
+      "spreadAngle": 130,
+      "ringCount": 26
+    },
+    "phase3": {
+      "patterns": ["laserSweep", "crossRing", "spiral", "aimedBurst", "ring"],
+      "fireIntervalMs": 540,
+      "moveSpeed": 0.48,
+      "spreadCount": 13,
+      "spreadAngle": 145,
+      "ringCount": 30
+    }
+  }
+]
