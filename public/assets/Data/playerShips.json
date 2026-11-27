@@ -1,6 +1,6 @@
 {
   "1": {
-    "movementSpeed": 0.6,
+    "movementSpeed": 0.62,
     "texture": "playerShip1_blue",
     "body": {
       "radius": 42,
@@ -9,19 +9,19 @@
     }
   },
   "2": {
-    "movementSpeed": 0.9,
+    "movementSpeed": 0.95,
     "texture": "playerShip2_blue",
     "body": {
-      "radius": 42,
+      "radius": 38,
       "offsetX": -4,
       "offsetY": 16
     }
   },
   "3": {
-    "movementSpeed": 1.2,
+    "movementSpeed": 0.42,
     "texture": "playerShip3_blue",
     "body": {
-      "radius": 42,
+      "radius": 44,
       "offsetX": -4,
       "offsetY": 16
     }
