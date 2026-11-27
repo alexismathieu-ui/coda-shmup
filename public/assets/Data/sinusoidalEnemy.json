@@ -1,0 +1,26 @@
+{
+  "spawnRate": 3000,
+  "maxActive": 3,
+  "poolSize": 8,
+  "health": 2,
+  "tint": "#44ffcc",
+  "scale": 1.05,
+  "shootDelayMin": 2000,
+  "shootDelayMax": 3200,
+  "movement": {
+    "verticalSpeed": 0.16,
+    "amplitude": 160,
+    "frequency": 0.5
+  },
+  "spreadShot": {
+    "bulletCount": 3,
+    "spreadAngle": 30
+  },
+  "bullet": {
+    "width": 14,
+    "height": 14,
+    "color": "#44ffcc",
+    "speed": 460,
+    "damage": 1
+  }
+}
