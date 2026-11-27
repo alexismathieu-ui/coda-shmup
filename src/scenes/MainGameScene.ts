@@ -145,7 +145,10 @@ export default class MainGameScene extends Scene {
             });
             const togglePause = () => this.togglePause();
             this.input.keyboard.addKey(Input.Keyboard.KeyCodes.P).on('down', togglePause);
-            this.input.keyboard.addKey(Input.Keyboard.KeyCodes.ESC).on('down', togglePause);
+            this.input.keyboard.addKey(Input.Keyboard.KeyCodes.TAB).on('down', (event: KeyboardEvent) => {
+                event.preventDefault?.();
+                this.togglePause();
+            });
         }
     }
 

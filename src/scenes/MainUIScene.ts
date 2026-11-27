@@ -329,7 +329,7 @@ export default class MainUIScene extends Scene {
         const resumeBox = this.add.rectangle(w / 2, h / 2 + 30, 460, 82, 0x1e2a4a, 0.95)
             .setStrokeStyle(4, 0x4cc9f0, 1)
             .setInteractive({useHandCursor: true});
-        const resumeLabel = this.add.text(w / 2, h / 2 + 30, 'REPRENDRE  [ESC / P]', {
+        const resumeLabel = this.add.text(w / 2, h / 2 + 30, 'REPRENDRE  [TAB / P]', {
             fontFamily: 'future',
             fontSize: '26px',
             color: '#4cc9f0',
