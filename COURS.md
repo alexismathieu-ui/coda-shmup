@@ -20,6 +20,7 @@ Minimal, TypeScript), et le commit 02 met les packages à jour avec `npx npm-che
 > Note : les commandes `npm run dev` / `npm run build` du template Phaser exécutent `log.js`, qui envoie un ping **anonyme** (nom du template, dev/prod, version de Phaser) vers `gryzor.co`. Aucune donnée personnelle n'est envoyée (voir `README_PHASER.md`, section « About log.js »). Pour désactiver cet envoi : `npm run dev-nolog` / `npm run build-nolog`.
 
 ## Concepts de base des moteurs de jeu
+
 ### Game Loop
 
 La game loop est le cycle fondamental qui maintient un jeu en cours d'exécution (Boucle infinie !).
@@ -27,6 +28,7 @@ La game loop est le cycle fondamental qui maintient un jeu en cours d'exécution
 Au sein de la game loop, tous les modules internes du moteur de jeu sont mis à jour et les rendus sont effectués
 en conséquence.
 Example de game loop :
+
 ```
     while (true) {
         handleInput();
@@ -34,6 +36,7 @@ Example de game loop :
         render();
     }
 ```
+
 Dans Phaser, la game loop est gérée en interne. Vous définissez juste la logique de mise à jour dans la méthode
 `update` de vos scènes.
 
@@ -47,9 +50,9 @@ Dans Phaser, chaque scène possède ses propres méthodes de cycle de vie :
 - `create` : Initialisation des objets du jeu.
 - `update` : Logique de mise à jour.
 
-Plus de détail sur leur ordre ici : <https://docs.phaser.io/phaser/concepts/scenes#flowchart-scene-life-cycle>  
+Plus de détail sur leur ordre ici : <https://docs.phaser.io/phaser/concepts/scenes#flowchart-scene-life-cycle>
 
-Vous pouvez avoir plusieurs scènes actives à la fois (on a souvent une scène de jeu et une pour l'UI qui vient 
+Vous pouvez avoir plusieurs scènes actives à la fois (on a souvent une scène de jeu et une pour l'UI qui vient
 par-dessus par exemple).
 
 Dans le code : les scènes sont `src/scenes/HomeScene.ts`, `MainGameScene.ts`, `MainUIScene.ts`, `GameOverScene.ts`,
@@ -73,6 +76,7 @@ Ils ne peuvent exister que sur une scène à la fois.
 Debug Tool: <https://github.com/Ariorh1337/phaser-debug-tool> (A utiliser sous Chrome)
 
 ### Références
+
 - <https://docs.phaser.io/>
 - <https://phaser.io/examples/>
 
@@ -84,26 +88,30 @@ Permet de voir pas mal de problématiques de base dans le développement de jeux
 
 ## Tirer parti des 3C (Camera, Control, Character)
 
-Les 3C (Camera, Control, Character) sont des éléments fondamentaux dans le développement de jeux vidéo. Ils permettent 
+Les 3C (Camera, Control, Character) sont des éléments fondamentaux dans le développement de jeux vidéo. Ils permettent
 de se focaliser sur les aspects clés du gameplay et de l'expérience utilisateur lors de la conception
 
 ### Camera
+
 Permet de définir ce que le joueur voit à l'écran.
 On partira sur une vue top, avec défilement vertical et screen shake.
 
 ### Contrôles
+
 Les contrôles déterminent comment le joueur interagit avec le jeu. Des contrôles réactifs et intuitifs sont
 essentiels pour un gameplay fluide.
 On utilisera le clavier pour contrôler le mouvement et tir du personnage.
 
 ### Character
+
 Défini l'avatar du joueur, s'il y a lieu.
 Notre personnage sera un vaisseau spatial avec des vies et différentes armes/powerups.
 
 ## Gestion des ressources du jeu
 
 Utilisation de resources gratuites et libres provenant de <https://kenney.nl/> (licence **CC0**, domaine public :
-utilisation libre, y compris commerciale, voir <https://kenney.nl/support>)
+utilisation libre, y compris commerciale — <https://kenney.nl/support>)
+
 - <https://kenney.nl/assets/space-shooter-redux>
 - <https://kenney.nl/assets/space-shooter-extension>
 - <https://kenney.nl/assets/ui-pack-sci-fi>
@@ -112,6 +120,7 @@ utilisation libre, y compris commerciale, voir <https://kenney.nl/support>)
 ### Graphismes
 
 Optimiser vos performances en assemblant vos images dans des atlas/spritesheets
+
 - **atlas**: regroupe plusieurs images en une seule, qu'importe leur taille. L'image sera associée a un fichier de donnée type JSON, XML
   afin d'indiquer la position/taille de chaque image dans l'atlas
 - **spritesheet**: regroupe plusieurs images, souvent d'une même animation, en une seule, et chaque image au sein de la spritesheet
@@ -138,6 +147,7 @@ avec `this.load.json`, puis lu via `this.scene.cache.json.get('playerShips')` (`
 (cf. évaluation).
 
 ### Outils
+
 - Editer des images: <https://www.photopea.com/>
 - Créer l'atlas du jeu : `npm run atlas` (basé sur [free-tex-packer-core](https://www.npmjs.com/package/free-tex-packer-core))
 
@@ -149,7 +159,8 @@ des balles, 22 `959dbd7` Entity, 23 `7a48be8` pooling des ennemis, 24 `04d27ae` 
 31 `4460ded` SaveManager, 32 `095c65d` EntityManager, 33 `ca42290` scène UI).
 
 ### Pooling
-Le pooling est une technique de gestion des ressources qui consiste à réutiliser des objets au lieu de les 
+
+Le pooling est une technique de gestion des ressources qui consiste à réutiliser des objets au lieu de les
 créer/détruire.
 Attention ! Cela vous oblige à gérer correctement l'état de ces objets et de le réinitialiser correctement avant de les réutiliser.
 
@@ -160,6 +171,7 @@ Bien remettre la vie à fond sans émettre d'événement : `heal(max, false)`, `
 une seule fois dans `init()` (`Enemy.ts:23-41`), pas dans `enable()`, sinon ils s'accumulent à chaque réutilisation.
 
 ### Entity/Component
+
 Utilisez une classe, Entity, pour définir les entités de votre jeu, ne pas hésiter à hériter d'une classe du moteur, tel que Sprite
 Puis ajoutez des composants pour customiser le comportement et les fonctionnalités disponibles a ces entités, via des classes Components
 Par exemple en ajoutant un component pour le mouvement, le tir ou la vie
@@ -172,12 +184,12 @@ Exemple dans le code : `Entity.addComponent` / `getComponent<T>` (`src/entities/
 
 ### Game State
 
-Le Game State représente toutes les données vivantes de votre jeu : c’est ce qui décrit exactement ce qui se passe à 
+Le Game State représente toutes les données vivantes de votre jeu : c’est ce qui décrit exactement ce qui se passe à
 un instant donné.
-On y retrouve les informations comme la position du joueur, son score, les ennemis présents, leur santé, ou encore 
+On y retrouve les informations comme la position du joueur, son score, les ennemis présents, leur santé, ou encore
 le niveau actuel.
 
-Le Game State sert aussi de base pour les systèmes de sauvegarde et de chargement : en enregistrant son contenu, 
+Le Game State sert aussi de base pour les systèmes de sauvegarde et de chargement : en enregistrant son contenu,
 vous pouvez retrouver la partie plus tard exactement là où elle s’était arrêtée.
 
 Dans le code : le score vit dans le **registry** Phaser (`src/RegistryConstants.ts`, `this.registry.set(...)` dans
@@ -187,6 +199,7 @@ est gérée par le `SaveManager` (`src/managers/SaveManager.ts`, clé `phaserSav
 du joueur dans `MainGameScene.endGame`, `src/scenes/MainGameScene.ts:55-64`).
 
 ### Managers/Services
+
 Centralisez la gestion de certaines fonctionnalités dans des classes dédiées, comme un EntityManager pour gérer les entités.
 Ils doivent être facilement accessibles pour le reste de la logique. Le système de plugins de Phaser permet de le faire de
 manière idiomatique à cette librairie, en les ayant soit au niveau global du jeu ou au niveau des scènes.
@@ -197,14 +210,16 @@ Exemple dans le code : les plugins sont enregistrés dans `src/main.ts:27-34` : 
 `src/managers/EntityManager.ts`).
 
 ### Références
+
 - <https://gameprogrammingpatterns.com/>
 
 ## UI
-Dans la majorité des jeux, l'UI, User Interface, est une couche supplémentaire qui vient donner des informations au 
-joueur et lui permettre de naviguer dans la Meta du jeu. (Meta: tout ce qui englobe, mais ne concerne directement 
+
+Dans la majorité des jeux, l'UI, User Interface, est une couche supplémentaire qui vient donner des informations au
+joueur et lui permettre de naviguer dans la Meta du jeu. (Meta: tout ce qui englobe, mais ne concerne directement
 pas le core gameplay)
 
-On essaye généralement que la couche logique n'ait aucune dépendance à celle de l'UI (votre jeu doit pouvoir 
+On essaye généralement que la couche logique n'ait aucune dépendance à celle de l'UI (votre jeu doit pouvoir
 tourner sans l'UI), pour qu'il soit plus maintenable et moins sujet aux bugs.
 
 Exemple dans le code : `src/scenes/MainUIScene.ts` ne fait qu'écouter : le score via les événements du registry
@@ -212,6 +227,7 @@ Exemple dans le code : `src/scenes/MainUIScene.ts` ne fait qu'écouter : le scor
 avec nettoyage des listeners au `SHUTDOWN`, lignes 20-24). Pendant ce temps, la logique tourne dans `MainGameScene`.
 
 ### Références
+
 - <https://snowb.org/>
 
 ## Game Feel/Juice
@@ -235,8 +251,9 @@ explosion en tween à la mort (`src/components/Health.ts:50-72`), sons laser (`s
 au preload (`src/scenes/HomeScene.ts:13-29`).
 
 ### Références
-- [Juice it or Lose it](https://www.youtube.com/watch?v=Fy0aCDmgnxg), Martin Jonasson et Petri Purho (2012, ~15 min) : un clone de Breakout transformé par de petits retours visuels et sonores
-- [The Art of Screenshake](https://www.youtube.com/watch?v=AJdEqssNZ-U), Jan Willem Nijman, Vlambeer (2013, ~45 min) : un shooter top-down simple, enrichi effet par effet
+
+- <https://www.youtube.com/watch?v=Fy0aCDmgnxg>
+- <https://www.youtube.com/watch?v=AJdEqssNZ-U>
 - <https://easings.net/>
 - <https://sfxr.me/>
 
@@ -251,6 +268,7 @@ Si vous forkez ce repo, changez `ITCH_USER` dans le workflow (valeur en dur : `s
 ## Features additionnelles
 
 ### Processus de développement
+
 - Publier votre projet actuel sur Github
 - Créer une feature branch pour chaque feature que vous implémentez (`git switch -c feature/...`), jamais de commit sur `main`
 - Faites des [commits atomiques](https://dev.to/samuelfaure/how-atomic-git-commits-dramatically-increased-my-productivity-and-will-increase-yours-too-4a84) sur votre branche : un commit = une idée, comme l'historique de `main`
@@ -270,6 +288,7 @@ Facultatif pendant le TD, avec n'importe quel agent :
 - Le code généré reste **votre** responsabilité
 
 ### Idées de features additionnelles
+
 - Spawn enemies in waves/pattern
 - Si vous voulez ajouter des boss/enemies, faites d'abord votre évaluation !
   - Astuce pour un ennemi « visuellement différent » sans modifier l'atlas : `setTint()` (cf. flash blanc quand un ennemi est touché, `src/entities/Enemy.ts:26`)
@@ -282,16 +301,16 @@ Facultatif pendant le TD, avec n'importe quel agent :
   - Améliorer les bullets (utilisation d'une image/sprite au lieu de rectangle)
   - Améliorer l'audio (musique, sons...)
 - Ajouter plusieurs niveaux, dont le contenu est défini via un json
-    - Selection de niveau via un menu, une fois niveau unlocked
+  - Selection de niveau via un menu, une fois niveau unlocked
 - Améliorer le Level Design
 - Mettre à jour l'UI pour un design homogène
 - Ajouter le support de nouveaux inputs
-    - Gamepad
-    - Touch input (pour jouer sur mobile)
+  - Gamepad
+  - Touch input (pour jouer sur mobile)
 - Ajouter le local coop pour 2 joueurs
-- Reskin des graphismes (si vous avez un petit côté artiste, 
-assurez-vous d'avoir les droits d'utilisation et
-garder une certaine coherence visuelle)
+- Reskin des graphismes (si vous avez un petit côté artiste,
+  assurez-vous d'avoir les droits d'utilisation et
+  garder une certaine coherence visuelle)
 - Ajouter un tutoriel (expliquer les contrôles, tuto diégétique)
 - Ajouter mouvement vertical pour le joueur
 - Migrer le jeu vers Phaser 4
@@ -299,4 +318,5 @@ garder une certaine coherence visuelle)
 Vous vous aussi proposer des features additionnelles, n'hésitez pas à en discuter en amont d'abord
 
 ## Réferences
+
 - <https://github.com/rthery/coda-shmup>
